@@ -1,0 +1,127 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.animecharacter'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.animecharacter"
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // إضافة مفتاح API كمتغير build
+        buildConfigField "String", "OPENAI_API_KEY", "\"${project.findProperty('OPENAI_API_KEY') ?: 'your_api_key_here'}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "OPENAI_API_KEY", "\"${project.findProperty('OPENAI_API_KEY') ?: 'your_api_key_here'}\""
+        }
+        debug {
+            buildConfigField "String", "OPENAI_API_KEY", "\"${project.findProperty('OPENAI_API_KEY') ?: 'your_api_key_here'}\""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+}
+
+dependencies {
+    // Android Core
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Lifecycle & ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-service:2.7.0'
+
+    // HTTP Client - Volley
+    implementation 'com.android.volley:volley:1.2.1'
+
+    // JSON Processing
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // Image Loading & Processing
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
+
+    // Animation
+    implementation 'com.airbnb.android:lottie:6.2.0'
+
+    // Room Database
+    implementation 'androidx.room:room-runtime:2.6.1'
+    implementation 'androidx.room:room-ktx:2.6.1'
+    kapt 'androidx.room:room-compiler:2.6.1'
+
+    // Security
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+
+    // Preferences
+    implementation 'androidx.preference:preference-ktx:1.2.1'
+
+    // Work Manager (للمهام في الخلفية)
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.7.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+
+    // مكتبات تحليل المشاعر والذكاء الاصطناعي
+    implementation 'org.tensorflow:tensorflow-lite:2.13.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.4.4'
+    
+    // مكتبات معالجة الصوت المتقدمة
+    implementation 'com.github.wendykierp:JTransforms:3.1'
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    
+    // مكتبات الرسوم المتحركة المتقدمة
+    implementation 'com.airbnb.android:lottie:6.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    
+    // مكتبات تحليل النصوص
+    implementation 'org.apache.opennlp:opennlp-tools:2.3.0'
+    
+    // مكتبات JSON المتقدمة
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.json:json:20230618'
+
+    // Live2D SDK
+    implementation files('libs/Live2DCubismFramework.jar')
+    implementation files('libs/Live2DCubismCore.jar')
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+}
+

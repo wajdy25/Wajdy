@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".activities.MainActivity">
+
+    <!-- شريط الأدوات -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ToolbarStyle">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_color"
+            app:title="@string/main_activity_title"
+            app:titleTextColor="@color/text_on_primary"
+            app:menu="@menu/main_menu" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- المحتوى الرئيسي -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- بطاقة معاينة الشخصية -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/characterPreviewCard"
+                style="@style/CardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <!-- صورة الشخصية -->
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/characterImageView"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_character" />
+
+                    <!-- اسم الشخصية -->
+                    <TextView
+                        android:id="@+id/characterNameText"
+                        style="@style/TitleTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/characterImageView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/character_sakura" />
+
+                    <!-- مؤشر الحالة -->
+                    <View
+                        android:id="@+id/statusIndicator"
+                        style="@style/StatusIndicator"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/status_offline" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- بطاقة الرسالة الترحيبية -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/welcomeMessageCard"
+                style="@style/MessageCardCharacter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/welcomeMessageText"
+                    style="@style/MessageTextCharacter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/welcome_message" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- منطقة المحادثة -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messagesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/chat_background"
+                android:padding="8dp"
+                tools:listitem="@layout/item_message" />
+
+            <!-- منطقة الإدخال -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/messageInputLayout"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/input_hint">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/messageEditText"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionSend"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/sendButton"
+                    style="@style/PrimaryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_gravity="bottom"
+                    android:text="@string/send_button"
+                    app:icon="@drawable/ic_send" />
+
+            </LinearLayout>
+
+            <!-- أزرار التحكم -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/micButton"
+                    style="@style/SecondaryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/mic_button"
+                    app:icon="@drawable/ic_mic" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/speakerButton"
+                    style="@style/SecondaryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/speaker_button"
+                    app:icon="@drawable/ic_volume_up" />
+
+            </LinearLayout>
+
+            <!-- زر تشغيل الشخصية العائمة -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/floatingCharacterButton"
+                style="@style/PrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/start_floating_character"
+                app:icon="@drawable/ic_launch" />
+
+            <!-- مؤشر التحميل -->
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loadingIndicator"
+                style="@style/ProgressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- زر الإعدادات العائم -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/settingsFab"
+        style="@style/FloatingActionButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/settings_button"
+        app:srcCompat="@drawable/ic_settings" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

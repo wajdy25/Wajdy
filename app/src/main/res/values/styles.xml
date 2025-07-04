@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    
+    <!-- النمط الأساسي للتطبيق -->
+    <style name="Theme.AnimeCharacter" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- الألوان الأساسية -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant</item>
+        <item name="colorAccent">@color/accent_color</item>
+        
+        <!-- ألوان الخلفية والسطح -->
+        <item name="android:colorBackground">@color/background_color</item>
+        <item name="colorSurface">@color/surface_color</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        
+        <!-- ألوان النص -->
+        <item name="colorOnPrimary">@color/text_on_primary</item>
+        <item name="colorOnSecondary">@color/text_on_secondary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        
+        <!-- ألوان الحالة -->
+        <item name="colorError">@color/error_color</item>
+        
+        <!-- شريط الحالة -->
+        <item name="android:statusBarColor">@color/primary_color</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- شريط التنقل -->
+        <item name="android:navigationBarColor">@color/background_color</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+    
+    <!-- نمط شريط الأدوات -->
+    <style name="ToolbarStyle" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/primary_color</item>
+        <item name="titleTextColor">@color/text_on_primary</item>
+        <item name="subtitleTextColor">@color/text_on_primary</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <!-- أنماط الأزرار -->
+    <style name="PrimaryButton" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary_color</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    
+    <style name="SecondaryButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary_color</item>
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    
+    <style name="FloatingActionButtonStyle" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/accent_color</item>
+        <item name="tint">@color/text_on_primary</item>
+        <item name="android:elevation">6dp</item>
+    </style>
+    
+    <!-- أنماط حقول الإدخال -->
+    <style name="TextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary_color</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="hintTextColor">@color/text_secondary</item>
+    </style>
+    
+    <style name="EditTextStyle" parent="Widget.Material3.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <!-- أنماط البطاقات -->
+    <style name="CardStyle" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface_color</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+    
+    <style name="MessageCardUser" parent="CardStyle">
+        <item name="cardBackgroundColor">@color/user_message_background</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+    
+    <style name="MessageCardCharacter" parent="CardStyle">
+        <item name="cardBackgroundColor">@color/character_message_background</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+    
+    <!-- أنماط النصوص -->
+    <style name="HeadlineTextStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="TitleTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="BodyTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+    
+    <style name="CaptionTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- أنماط الرسائل -->
+    <style name="MessageTextUser">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/message_text_user</item>
+        <item name="android:padding">12dp</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="MessageTextCharacter">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/message_text_character</item>
+        <item name="android:padding">12dp</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- أنماط الحالة -->
+    <style name="StatusIndicator">
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">12dp</item>
+        <item name="android:background">@drawable/circle_shape</item>
+    </style>
+    
+    <!-- أنماط الشخصية العائمة -->
+    <style name="FloatingCharacterContainer">
+        <item name="android:background">@drawable/floating_character_background</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+    
+    <!-- أنماط الحوار -->
+    <style name="DialogStyle" parent="Theme.Material3.DayNight.Dialog">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="android:windowCornerRadius">16dp</item>
+    </style>
+    
+    <!-- أنماط شريط التقدم -->
+    <style name="ProgressBarStyle" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="indicatorColor">@color/primary_color</item>
+        <item name="trackColor">@color/surface_variant</item>
+        <item name="indicatorSize">48dp</item>
+        <item name="trackThickness">4dp</item>
+    </style>
+    
+    <!-- أنماط التبديل -->
+    <style name="SwitchStyle" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="thumbTint">@color/primary_color</item>
+        <item name="trackTint">@color/surface_variant</item>
+    </style>
+    
+    <!-- أنماط شريط التمرير -->
+    <style name="SliderStyle" parent="Widget.Material3.Slider">
+        <item name="activeTrackColor">@color/primary_color</item>
+        <item name="inactiveTrackColor">@color/surface_variant</item>
+        <item name="thumbColor">@color/primary_color</item>
+    </style>
+    
+    <!-- أنماط الرقائق -->
+    <style name="ChipStyle" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipBackgroundColor">@color/surface_variant</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="chipCornerRadius">16dp</item>
+    </style>
+    
+    <!-- أنماط القائمة المنسدلة -->
+    <style name="SpinnerStyle" parent="Widget.Material3.MaterialTimePicker.Display">
+        <item name="android:background">@drawable/spinner_background</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <!-- أنماط الإشعارات -->
+    <style name="NotificationStyle">
+        <item name="android:background">@color/surface_color</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:padding">16dp</item>
+    </style>
+    
+</resources>
+

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.animecharacter">
+
+    <!-- الأذونات الأساسية -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BIND_RECOGNITION_SERVICE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- أذونات جديدة لمراقبة الإشعارات -->
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    
+    <!-- أذونات إضافية للتفاعل مع النظام -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AnimeCharacterApp"
+        tools:targetApi="31">
+
+        <!-- النشاط الرئيسي -->
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AnimeCharacterApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- نشاط الإعدادات -->
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:parentActivityName=".activities.MainActivity" />
+
+        <!-- نشاط اختيار الشخصية -->
+        <activity
+            android:name=".activities.CharacterSelectionActivity"
+            android:exported="false"
+            android:label="@string/character_selection_title"
+            android:parentActivityName=".activities.MainActivity" />
+
+        <!-- خدمة الشخصية العائمة -->
+        <service
+            android:name=".services.FloatingCharacterService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <!-- خدمة الذكاء الاصطناعي -->
+        <service
+            android:name=".services.AIService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة الصوت -->
+        <service
+            android:name=".services.VoiceService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة الرسوم المتحركة -->
+        <service
+            android:name=".services.CharacterAnimationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة التكامل مع النظام -->
+        <service
+            android:name=".services.SystemIntegrationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة التعلم المستمر -->
+        <service
+            android:name=".services.ContinuousLearningService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة تحليل المشاعر -->
+        <service
+            android:name=".services.EmotionAnalysisService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة مراقبة إشعارات وسائل التواصل الاجتماعي -->
+        <service
+            android:name=".services.SocialMediaNotificationService"
+            android:label="@string/social_media_notification_service_label"
+            android:exported="false"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.notification.default_filter_types"
+                android:value="conversations|alerting" />
+            <meta-data
+                android:name="android.service.notification.disabled_filter_types"
+                android:value="ongoing|silent" />
+        </service>
+
+        <!-- خدمة المؤثرات البصرية -->
+        <service
+            android:name=".services.VisualEffectsService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة الرسوم المتحركة المتقدمة -->
+        <service
+            android:name=".services.AdvancedCharacterAnimationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة التفاعل الصوتي المتقدم -->
+        <service
+            android:name=".services.AdvancedVoiceInteractionService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- مستقبل البث للأحداث -->
+        <receiver
+            android:name=".receivers.SocialMediaBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.animecharacter.SOCIAL_MEDIA_INTERACTION" />
+                <action android:name="com.animecharacter.SOCIAL_MEDIA_SERVICE_STATUS" />
+                <action android:name="com.animecharacter.GOAL_COMPLETED" />
+                <action android:name="com.animecharacter.ANIMATION_EVENT" />
+                <action android:name="com.animecharacter.ANIMATION_UNLOCKED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- مستقبل البث لإعادة التشغيل -->
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- موفر المحتوى للبيانات المشتركة -->
+        <provider
+            android:name=".providers.SocialMediaDataProvider"
+            android:authorities="com.animecharacter.socialmedia"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- خدمة مراقبة التطبيقات -->
+        <service
+            android:name=".services.AppMonitorService"
+            android:enabled="true"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

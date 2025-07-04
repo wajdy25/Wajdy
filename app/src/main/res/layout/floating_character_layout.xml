@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/floating_character_background"
+    android:padding="8dp">
+
+    <!-- زر الإغلاق -->
+    <ImageButton
+        android:id="@+id/closeButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/close_button_background"
+        android:src="@drawable/ic_close"
+        android:contentDescription="@string/close"
+        android:visibility="gone" />
+
+    <!-- الشخصية المتحركة -->
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/characterGifImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/closeButton"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        android:src="@raw/default_character_animation" />
+
+    <!-- فقاعة المحادثة -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/chatBubbleCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/characterGifImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/surface_color"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp">
+
+        <TextView
+            android:id="@+id/chatBubbleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:maxWidth="200dp"
+            android:text="مرحباً!"
+            android:textColor="@color/text_primary"
+            android:textDirection="rtl"
+            android:textSize="14sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- مؤشر الحالة -->
+    <View
+        android:id="@+id/statusIndicator"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_alignTop="@id/characterGifImageView"
+        android:layout_alignEnd="@id/characterGifImageView"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/status_indicator_background" />
+
+    <!-- أزرار التحكم السريع -->
+    <LinearLayout
+        android:id="@+id/quickControlsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chatBubbleCard"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/micQuickButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/quick_button_background"
+            android:src="@drawable/ic_mic_small"
+            android:contentDescription="@string/mic_button" />
+
+        <ImageButton
+            android:id="@+id/settingsQuickButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/quick_button_background"
+            android:src="@drawable/ic_settings_small"
+            android:contentDescription="@string/settings_button" />
+
+    </LinearLayout>
+
+    <!-- مؤشر السحب -->
+    <View
+        android:id="@+id/dragIndicator"
+        android:layout_width="20dp"
+        android:layout_height="4dp"
+        android:layout_below="@id/quickControlsLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/drag_indicator_background"
+        android:alpha="0.5" />
+
+</RelativeLayout>
+

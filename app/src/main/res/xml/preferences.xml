@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- إعدادات الشخصية -->
+    <PreferenceCategory
+        android:title="@string/character_settings_category"
+        android:icon="@drawable/ic_character">
+
+        <ListPreference
+            android:key="selected_character"
+            android:title="@string/selected_character_title"
+            android:summary="@string/selected_character_summary"
+            android:icon="@drawable/ic_character_selection" />
+
+        <SeekBarPreference
+            android:key="character_size"
+            android:title="@string/character_size_title"
+            android:summary="@string/character_size_summary"
+            android:icon="@drawable/ic_resize"
+            android:max="200"
+            android:min="80"
+            app:showSeekBarValue="true" />
+
+        <SeekBarPreference
+            android:key="character_transparency"
+            android:title="@string/character_transparency_title"
+            android:summary="@string/character_transparency_summary"
+            android:icon="@drawable/ic_transparency"
+            android:max="100"
+            android:min="30"
+            app:showSeekBarValue="true" />
+
+    </PreferenceCategory>
+
+    <!-- إعدادات الصوت -->
+    <PreferenceCategory
+        android:title="@string/voice_settings_category"
+        android:icon="@drawable/ic_voice">
+
+        <SwitchPreferenceCompat
+            android:key="is_wake_word_enabled"
+            android:title="@string/wake_word_enable_title"
+            android:summary="@string/wake_word_enable_summary"
+            android:icon="@drawable/ic_mic"
+            android:defaultValue="false" />
+
+        <EditTextPreference
+            android:key="wake_word"
+            android:title="@string/wake_word_title"
+            android:summary="@string/wake_word_summary"
+            android:icon="@drawable/ic_text_input"
+            android:dependency="is_wake_word_enabled" />
+
+        <ListPreference
+            android:key="voice_language"
+            android:title="@string/voice_language_title"
+            android:summary="@string/voice_language_summary"
+            android:icon="@drawable/ic_language" />
+
+        <ListPreference
+            android:key="selected_dialect"
+            android:title="@string/selected_dialect_title"
+            android:summary="@string/selected_dialect_summary"
+            android:icon="@drawable/ic_dialect"
+            android:dependency="voice_language" />
+
+        <SeekBarPreference
+            android:key="speech_rate"
+            android:title="@string/speech_rate_title"
+            android:summary="@string/speech_rate_summary"
+            android:icon="@drawable/ic_speed"
+            android:max="200"
+            android:min="50"
+            app:showSeekBarValue="true" />
+
+        <SeekBarPreference
+            android:key="speech_pitch"
+            android:title="@string/speech_pitch_title"
+            android:summary="@string/speech_pitch_summary"
+            android:icon="@drawable/ic_pitch"
+            android:max="200"
+            android:min="50"
+            app:showSeekBarValue="true" />
+
+    </PreferenceCategory>
+
+    <!-- إعدادات الذكاء الاصطناعي -->
+    <PreferenceCategory
+        android:title="@string/ai_settings_category"
+        android:icon="@drawable/ic_ai">
+
+        <ListPreference
+            android:key="personality_mode"
+            android:title="@string/personality_mode_title"
+            android:summary="@string/personality_mode_summary"
+            android:icon="@drawable/ic_personality" />
+
+        <EditTextPreference
+            android:key="welcome_message"
+            android:title="@string/welcome_message_title"
+            android:summary="@string/welcome_message_summary"
+            android:icon="@drawable/ic_message" />
+
+    </PreferenceCategory>
+
+    <!-- إعدادات الخصوصية والأمان -->
+    <PreferenceCategory
+        android:title="@string/privacy_settings_category"
+        android:icon="@drawable/ic_privacy">
+
+        <SwitchPreferenceCompat
+            android:key="save_conversations"
+            android:title="@string/save_conversations_title"
+            android:summary="@string/save_conversations_summary"
+            android:icon="@drawable/ic_save"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="microphone_notifications"
+            android:title="@string/microphone_notifications_title"
+            android:summary="@string/microphone_notifications_summary"
+            android:icon="@drawable/ic_notification"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="data_encryption"
+            android:title="@string/data_encryption_title"
+            android:summary="@string/data_encryption_summary"
+            android:icon="@drawable/ic_security"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <!-- إعدادات متقدمة -->
+    <PreferenceCategory
+        android:title="@string/advanced_settings_category"
+        android:icon="@drawable/ic_advanced">
+
+        <Preference
+            android:key="reset_settings"
+            android:title="@string/reset_settings_title"
+            android:summary="@string/reset_settings_summary"
+            android:icon="@drawable/ic_reset" />
+
+        <Preference
+            android:key="export_settings"
+            android:title="@string/export_settings_title"
+            android:summary="@string/export_settings_summary"
+            android:icon="@drawable/ic_export" />
+
+        <Preference
+            android:key="app_version"
+            android:title="@string/app_version_title"
+            android:summary="@string/app_version_summary"
+            android:icon="@drawable/ic_info"
+            android:selectable="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
+
+
+
+    <!-- إعدادات إخفاء الأيقونة أثناء الألعاب -->
+    <PreferenceCategory
+        android:title="@string/hide_on_game_category"
+        android:icon="@drawable/ic_game_controller">
+
+        <SwitchPreferenceCompat
+            android:key="hide_on_game_enabled"
+            android:title="@string/hide_on_game_enable_title"
+            android:summary="@string/hide_on_game_enable_summary"
+            android:icon="@drawable/ic_visibility_off"
+            android:defaultValue="false" />
+
+        <MultiSelectListPreference
+            android:key="game_package_names"
+            android:title="@string/game_package_names_title"
+            android:summary="@string/game_package_names_summary"
+            android:icon="@drawable/ic_apps"
+            android:dependency="hide_on_game_enabled" />
+
+    </PreferenceCategory>
+
+

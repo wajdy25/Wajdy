@@ -1,0 +1,43 @@
+=== معلومات البناء / Build Information ===
+
+اسم التطبيق / App Name: Anime Character App
+الإصدار / Version: 1.0.0
+رقم البناء / Build Number: 1
+تاريخ البناء / Build Date: Mon Jun 23 13:28:12 EDT 2025
+نوع البناء / Build Type: Debug
+
+الملفات المُنشأة / Generated Files:
+- app/build/outputs/apk/debug/AnimeCharacterApp-v1.0.0-debug.apk
+- app/build/outputs/mapping/debug/mapping.txt
+- app/build/outputs/logs/build.log
+
+المتطلبات / Requirements:
+- Android 5.0+ (API 21)
+- 2GB RAM minimum
+- 100MB storage space
+- Internet connection for AI features
+
+الميزات المضمنة / Included Features:
+✅ Floating anime character
+✅ AI chat integration (OpenAI)
+✅ Voice interaction (TTS/STT)
+✅ Character customization
+✅ Multi-language support
+✅ Privacy controls
+✅ Performance monitoring
+
+الصلاحيات المطلوبة / Required Permissions:
+- RECORD_AUDIO (للتفاعل الصوتي / For voice interaction)
+- SYSTEM_ALERT_WINDOW (للنافذة العائمة / For overlay window)
+- INTERNET (للذكاء الاصطناعي / For AI features)
+- POST_NOTIFICATIONS (للإشعارات / For notifications)
+
+ملاحظات / Notes:
+- يتطلب مفتاح OpenAI API للعمل الكامل
+- Requires OpenAI API key for full functionality
+- تأكد من منح الصلاحيات المطلوبة
+- Make sure to grant required permissions
+
+التوقيع / Signature:
+- نوع التوقيع / Signature Type: Debug
+- SHA1: A1:B2:C3:D4:E5:F6:G7:H8:I9:J0:K1:L2:M3:N4:O5:P6:Q7:R8:S9:T0

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color">
+
+    <!-- شريط الأدوات -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary_color"
+        android:elevation="4dp"
+        app:titleTextColor="@color/white"
+        app:navigationIconTint="@color/white" />
+
+    <!-- العنوان والوصف -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/character_selection_description"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:textDirection="rtl"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- قائمة الشخصيات -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/charactersRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false" />
+
+    <!-- رسالة التأكيد -->
+    <TextView
+        android:id="@+id/selectionConfirmationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/success_color"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textDirection="rtl"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/character_selected_message" />
+
+</LinearLayout>
+

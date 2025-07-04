@@ -1,0 +1,134 @@
+<resources>
+    <!-- اسم التطبيق -->
+    <string name="app_name">الشخصية التفاعلية</string>
+    
+    <!-- النشاط الرئيسي -->
+    <string name="main_activity_title">الشخصية التفاعلية</string>
+    <string name="welcome_message">مرحباً! أنا شخصيتك الأنمي التفاعلية. كيف يمكنني مساعدتك اليوم؟</string>
+    <string name="input_hint">اكتب رسالتك هنا...</string>
+    <string name="send_button">إرسال</string>
+    <string name="mic_button">ميكروفون</string>
+    <string name="speaker_button">مكبر الصوت</string>
+    <string name="settings_button">الإعدادات</string>
+    <string name="start_floating_character">تشغيل الشخصية العائمة</string>
+    <string name="stop_floating_character">إيقاف الشخصية العائمة</string>
+    
+    <!-- الإعدادات -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="character_settings">إعدادات الشخصية</string>
+    <string name="voice_settings">إعدادات الصوت</string>
+    <string name="ai_settings">إعدادات الذكاء الاصطناعي</string>
+    <string name="privacy_settings">الخصوصية والأمان</string>
+    
+    <!-- إعدادات الشخصية -->
+    <string name="select_character">اختيار الشخصية</string>
+    <string name="character_size">حجم الشخصية</string>
+    <string name="character_transparency">مستوى الشفافية</string>
+    <string name="character_position">موقع الشخصية</string>
+    
+    <!-- إعدادات الصوت -->
+    <string name="voice_type">نوع الصوت</string>
+    <string name="speech_rate">سرعة الكلام</string>
+    <string name="volume_level">مستوى الصوت</string>
+    <string name="language_selection">اللغة</string>
+    
+    <!-- إعدادات الذكاء الاصطناعي -->
+    <string name="personality_mode">نمط الشخصية</string>
+    <string name="response_length">طول الاستجابة</string>
+    <string name="favorite_topics">الموضوعات المفضلة</string>
+    
+    <!-- إعدادات الخصوصية -->
+    <string name="save_conversations">حفظ المحادثات</string>
+    <string name="microphone_notifications">إشعارات الميكروفون</string>
+    <string name="data_encryption">تشفير البيانات</string>
+    
+    <!-- الرسائل -->
+    <string name="loading">جاري التحميل...</string>
+    <string name="thinking">أفكر...</string>
+    <string name="listening">أستمع...</string>
+    <string name="speaking">أتحدث...</string>
+    <string name="error_network">خطأ في الاتصال بالإنترنت</string>
+    <string name="error_api">عذراً، حدث خطأ في الخدمة</string>
+    <string name="error_microphone">لا يمكن الوصول للميكروفون</string>
+    <string name="error_permission">الصلاحية مطلوبة لتشغيل هذه الميزة</string>
+    
+    <!-- الصلاحيات -->
+    <string name="permission_overlay_title">صلاحية النافذة العائمة</string>
+    <string name="permission_overlay_message">يحتاج التطبيق لصلاحية عرض النوافذ فوق التطبيقات الأخرى لتشغيل الشخصية العائمة</string>
+    <string name="permission_microphone_title">صلاحية الميكروفون</string>
+    <string name="permission_microphone_message">يحتاج التطبيق لصلاحية الميكروفون للتفاعل الصوتي</string>
+    <string name="grant_permission">منح الصلاحية</string>
+    <string name="deny_permission">رفض</string>
+    
+    <!-- الشخصيات -->
+    <string name="character_sakura">ساكورا</string>
+    <string name="character_naruto">ناروتو</string>
+    <string name="character_luffy">لوفي</string>
+    <string name="character_goku">غوكو</string>
+    <string name="character_custom">شخصية مخصصة</string>
+    <string name="add_character">إضافة شخصية جديدة</string>
+    
+    <!-- أنماط الشخصية -->
+    <string name="personality_friendly">ودود</string>
+    <string name="personality_formal">رسمي</string>
+    <string name="personality_playful">مرح</string>
+    <string name="personality_wise">حكيم</string>
+    <string name="personality_energetic">نشيط</string>
+    
+    <!-- اللغات -->
+    <string name="language_arabic">العربية</string>
+    <string name="language_english">الإنجليزية</string>
+    <string name="language_japanese">اليابانية</string>
+    
+    <!-- الإشعارات -->
+    <string name="notification_channel_name">الشخصية التفاعلية</string>
+    <string name="notification_channel_description">إشعارات الشخصية التفاعلية</string>
+    <string name="notification_floating_title">الشخصية العائمة نشطة</string>
+    <string name="notification_floating_text">اضغط للعودة للتطبيق</string>
+    <string name="notification_listening_title">الميكروفون نشط</string>
+    <string name="notification_listening_text">التطبيق يستمع لصوتك</string>
+    
+    <!-- أزرار عامة -->
+    <string name="ok">موافق</string>
+    <string name="cancel">إلغاء</string>
+    <string name="save">حفظ</string>
+    <string name="reset">إعادة تعيين</string>
+    <string name="close">إغلاق</string>
+    <string name="minimize">تصغير</string>
+    <string name="maximize">تكبير</string>
+    
+    <!-- رسائل الترحيب -->
+    <string name="welcome_first_time">مرحباً! أنا شخصيتك الأنمي الجديدة. دعنا نبدأ المحادثة!</string>
+    <string name="welcome_back">أهلاً بعودتك! كيف كان يومك؟</string>
+    
+    <!-- رسائل الخطأ المفصلة -->
+    <string name="error_no_internet">يبدو أنك غير متصل بالإنترنت. تحقق من اتصالك وحاول مرة أخرى.</string>
+    <string name="error_api_limit">تم تجاوز حد الاستخدام اليومي. حاول مرة أخرى غداً.</string>
+    <string name="error_invalid_input">عذراً، لم أفهم ما قلته. هل يمكنك إعادة المحاولة؟</string>
+    
+</resources>
+
+
+
+    <!-- إعدادات اسم التفعيل -->
+    <string name="wake_word_enable_title">تفعيل كلمة التفعيل</string>
+    <string name="wake_word_enable_summary">تفعيل أو تعطيل ميزة كلمة التفعيل الصوتي للشخصية.</string>
+    <string name="wake_word_title">كلمة التفعيل</string>
+    <string name="wake_word_summary">الكلمة التي ستستخدمها لتفعيل الشخصية (مثال: مزنة، شيماء).</string>
+
+    <!-- إعدادات إخفاء الأيقونة أثناء الألعاب -->
+    <string name="hide_on_game_category">إخفاء الأيقونة أثناء الألعاب</string>
+    <string name="hide_on_game_enable_title">إخفاء الأيقونة تلقائياً</string>
+    <string name="hide_on_game_enable_summary">إخفاء الأيقونة العائمة تلقائياً عند تشغيل الألعاب المحددة.</string>
+    <string name="game_package_names_title">تحديد الألعاب</string>
+    <string name="game_package_names_summary">اختر الألعاب التي تريد إخفاء الأيقونة العائمة عند تشغيلها.</string>
+    <string name="selected_games">ألعاب مختارة</string>
+
+
+
+
+    <!-- إعدادات اللهجة -->
+    <string name="selected_dialect_title">اللهجة</string>
+    <string name="selected_dialect_summary">اختر اللهجة المفضلة للشخصية.</string>
+
+

@@ -1,0 +1,10 @@
+# ProGuard mapping file for Anime Character App
+# This file contains the mapping between original and obfuscated class names
+
+com.animecharacter.activities.MainActivity -> a.a.a:
+com.animecharacter.services.FloatingCharacterService -> a.a.b:
+com.animecharacter.services.AIService -> a.a.c:
+com.animecharacter.services.VoiceService -> a.a.d:
+com.animecharacter.utils.PreferencesHelper -> a.b.a:
+com.animecharacter.utils.PermissionHelper -> a.b.b:
+com.animecharacter.utils.PerformanceMonitor -> a.b.c:
