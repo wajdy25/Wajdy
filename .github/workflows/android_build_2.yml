@@ -22,7 +22,7 @@ jobs:
       - name: Download Gradle Wrapper
         run: |
           mkdir -p gradle/wrapper
-          curl -L -o gradle/wrapper/gradle-wrapper.jar https://services.gradle.org/distributions/gradle-8.3-bin.zip
+          curl -L -o gradle/wrapper/gradle-wrapper.jar https://github.com/gradle/gradle/raw/v8.3/gradle/wrapper/gradle-wrapper.jar
           curl -L -o gradle/wrapper/gradle-wrapper.properties https://raw.githubusercontent.com/gradle/gradle/v8.3/gradle/wrapper/gradle-wrapper.properties
 
       - name: Grant execute permission for gradlew
