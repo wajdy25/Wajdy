@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +21,13 @@ jobs:
 
       - name: Give execute permission for gradlew
         run: chmod +x ./gradlew
+
+      - name: Download gradle-wrapper.jar
+        run: |
+          mkdir -p gradle/wrapper
+          curl -L -o gradle-8.14.3-bin.zip https://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+          unzip -j gradle-8.14.3-bin.zip 'gradle/wrapper/gradle-wrapper.jar' -d gradle/wrapper/
+          rm gradle-8.14.3-bin.zip
 
       - name: Build APK
         run: ./gradlew assembleDebug --warning-mode all --stacktrace --info
