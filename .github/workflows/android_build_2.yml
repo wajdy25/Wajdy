@@ -29,13 +29,11 @@ jobs:
         run: |
           PROPERTIES_FILE=gradle/wrapper/gradle-wrapper.properties
           if [ ! -f "$PROPERTIES_FILE" ]; then
-            cat > "$PROPERTIES_FILE" <<EOL
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-EOL
+            echo "distributionBase=GRADLE_USER_HOME" > "$PROPERTIES_FILE"
+            echo "distributionPath=wrapper/dists" >> "$PROPERTIES_FILE"
+            echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES_FILE"
+            echo "zipStoreBase=GRADLE_USER_HOME" >> "$PROPERTIES_FILE"
+            echo "zipStorePath=wrapper/dists" >> "$PROPERTIES_FILE"
           else
             grep -q "^distributionUrl=" "$PROPERTIES_FILE" || echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES_FILE"
           fi
