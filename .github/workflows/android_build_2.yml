@@ -1,25 +1,4 @@
-name: Build Android APK
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: 17
-
-      - name: Ensure gradle-wrapper.properties is correct
+- name: Ensure gradle-wrapper.properties is correct
         run: |
           mkdir -p gradle/wrapper
           if [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
@@ -35,20 +14,3 @@ EOF
             echo "gradle-wrapper.properties exists, verifying..."
             grep -q "distributionUrl=" gradle/wrapper/gradle-wrapper.properties || echo "distributionUrl=https://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> gradle/wrapper/gradle-wrapper.properties
           fi
-
-      - name: Download gradle-wrapper.jar
-        run: |
-          mkdir -p gradle/wrapper
-          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
-
-      - name: Give execute permission for gradlew
-        run: chmod +x ./gradlew
-
-      - name: Build APK
-        run: ./gradlew assembleDebug --warning-mode all --stacktrace --info
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
