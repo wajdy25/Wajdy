@@ -19,13 +19,30 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
-      - name: Give execute permission for gradlew
-        run: chmod +x ./gradlew
+      - name: Ensure gradle-wrapper.properties is correct
+        run: |
+          mkdir -p gradle/wrapper
+          if [ ! -f gradle/wrapper/gradle-wrapper.properties ]; then
+            echo "gradle-wrapper.properties not found, creating..."
+            cat <<EOF > gradle/wrapper/gradle-wrapper.properties
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+EOF
+          else
+            echo "gradle-wrapper.properties exists, verifying..."
+            grep -q "distributionUrl=" gradle/wrapper/gradle-wrapper.properties || echo "distributionUrl=https://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> gradle/wrapper/gradle-wrapper.properties
+          fi
 
       - name: Download gradle-wrapper.jar
         run: |
           mkdir -p gradle/wrapper
           curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
+
+      - name: Give execute permission for gradlew
+        run: chmod +x ./gradlew
 
       - name: Build APK
         run: ./gradlew assembleDebug --warning-mode all --stacktrace --info
