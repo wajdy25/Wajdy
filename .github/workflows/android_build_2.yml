@@ -67,11 +67,17 @@ jobs:
       - name: Download gradle-wrapper.jar
         run: curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
 
+      - name: Create APK output directory
+        run: mkdir -p app/build/outputs/apk/debug/
+
       - name: Build APK with detailed logs
         run: ./gradlew assembleDebug --stacktrace --info --debug || true
 
-      - name: List all APK output folders recursively
+      - name: List all APK output files recursively
         run: ls -R app/build/outputs/apk/
+
+      - name: Find APK files
+        run: find app/build/outputs/ -name "*.apk" -print
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
