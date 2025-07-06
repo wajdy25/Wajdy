@@ -34,56 +34,53 @@ jobs:
           rm cmdline-tools.zip
           mv $ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools/tools
 
-      - name: Set ANDROID_HOME and update PATH
+      - name: Set environment variables and update PATH
         run: |
           echo "ANDROID_HOME=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
           echo "$ANDROID_SDK_ROOT/platform-tools" >> $GITHUB_PATH
           echo "$ANDROID_SDK_ROOT/cmdline-tools/tools/bin" >> $GITHUB_PATH
 
-      - name: Accept licenses and install SDK components
+      - name: Accept licenses and install SDK packages
         run: |
           yes | sdkmanager --licenses
           sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 
+      - name: Fix gradle wrapper files if missing
+        run: |
+          mkdir -p gradle/wrapper
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+            curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
+          fi
+
+          PROPERTIES=gradle/wrapper/gradle-wrapper.properties
+          if [ ! -f "$PROPERTIES" ]; then
+            cat > "$PROPERTIES" <<EOL
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+EOL
+          else
+            grep -q "^distributionUrl=" "$PROPERTIES" || echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES"
+          fi
+
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Ensure gradle/wrapper directory exists
-        run: mkdir -p gradle/wrapper
-
-      - name: Create or fix gradle-wrapper.properties
-        run: |
-          PROPERTIES_FILE=gradle/wrapper/gradle-wrapper.properties
-          if [ ! -f "$PROPERTIES_FILE" ]; then
-            echo "distributionBase=GRADLE_USER_HOME" > "$PROPERTIES_FILE"
-            echo "distributionPath=wrapper/dists" >> "$PROPERTIES_FILE"
-            echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES_FILE"
-            echo "zipStoreBase=GRADLE_USER_HOME" >> "$PROPERTIES_FILE"
-            echo "zipStorePath=wrapper/dists" >> "$PROPERTIES_FILE"
-          else
-            grep -q "^distributionUrl=" "$PROPERTIES_FILE" || echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES_FILE"
-          fi
-
-      - name: Download gradle-wrapper.jar
-        run: curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
-
-      - name: Create APK output directory
-        run: mkdir -p app/build/outputs/apk/debug/
-
-      - name: Build APK with detailed logs
+      - name: Build APK with full logs
         run: ./gradlew assembleDebug --stacktrace --info --debug || true
 
-      - name: عرض جميع ملفات السجل إذا وجدت
+      - name: Show logs if any errors
         run: |
-          echo "----- عرض جميع ملفات سجل الأخطاء -----"
-          find app/build/ -type f -name "*.log" -exec cat {} \; || echo "لم يتم العثور على ملفات سجل"
+          echo "----- عرض ملفات السجل -----"
+          find app/build/ -type f -name "*.log" -exec cat {} \; || echo "لا توجد ملفات سجل"
 
-      - name: استعراض ملفات APK المتولدة
-        run: |
-          echo "----- عرض ملفات APK -----"
-          find app/build/outputs/ -name "*.apk" -print
+      - name: Find APK files
+        run: find app/build/outputs/ -name "*.apk" -print
 
-      - name: رفع ملف APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
