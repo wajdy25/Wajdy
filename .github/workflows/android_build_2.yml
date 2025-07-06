@@ -70,8 +70,8 @@ jobs:
       - name: Build APK with detailed logs
         run: ./gradlew assembleDebug --stacktrace --info --debug || true
 
-      - name: List APK output directory
-        run: ls -l app/build/outputs/apk/debug/
+      - name: List all APK output folders recursively
+        run: ls -R app/build/outputs/apk/
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
