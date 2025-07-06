@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60  # زيادة وقت التنفيذ إلى 60 دقيقة
+    timeout-minutes: 60
 
     env:
       ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
@@ -70,8 +70,12 @@ jobs:
       - name: Build APK with detailed logs
         run: ./gradlew assembleDebug --stacktrace --info --debug || true
 
+      - name: List APK output directory
+        run: ls -l app/build/outputs/apk/debug/
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
