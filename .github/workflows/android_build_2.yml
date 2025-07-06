@@ -46,12 +46,11 @@ jobs:
           yes | sdkmanager --licenses
           sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 
-      - name: Fix gradle wrapper files if missing
+      - name: Fix gradle wrapper files (force download clean jar)
         run: |
           mkdir -p gradle/wrapper
-          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
-            curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
-          fi
+          rm -f gradle/wrapper/gradle-wrapper.jar
+          curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.14.3/gradle/wrapper/gradle-wrapper.jar
           PROPERTIES=gradle/wrapper/gradle-wrapper.properties
           if [ ! -f "$PROPERTIES" ]; then
             echo "distributionBase=GRADLE_USER_HOME" > "$PROPERTIES"
