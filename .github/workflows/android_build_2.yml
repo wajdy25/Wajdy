@@ -73,13 +73,17 @@ jobs:
       - name: Build APK with detailed logs
         run: ./gradlew assembleDebug --stacktrace --info --debug || true
 
-      - name: List all APK output files recursively
-        run: ls -R app/build/outputs/apk/
+      - name: عرض جميع ملفات السجل إذا وجدت
+        run: |
+          echo "----- عرض جميع ملفات سجل الأخطاء -----"
+          find app/build/ -type f -name "*.log" -exec cat {} \; || echo "لم يتم العثور على ملفات سجل"
 
-      - name: Find APK files
-        run: find app/build/outputs/ -name "*.apk" -print
+      - name: استعراض ملفات APK المتولدة
+        run: |
+          echo "----- عرض ملفات APK -----"
+          find app/build/outputs/ -name "*.apk" -print
 
-      - name: Upload APK artifact
+      - name: رفع ملف APK
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
