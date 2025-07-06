@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60  # زيادة وقت التنفيذ إلى 60 دقيقة
 
     env:
       ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
