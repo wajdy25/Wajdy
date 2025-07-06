@@ -55,15 +55,13 @@ jobs:
 
           PROPERTIES=gradle/wrapper/gradle-wrapper.properties
           if [ ! -f "$PROPERTIES" ]; then
-            cat > "$PROPERTIES" <<EOL
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-EOL
+            echo "distributionBase=GRADLE_USER_HOME" > "$PROPERTIES"
+            echo "distributionPath=wrapper/dists" >> "$PROPERTIES"
+            echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES"
+            echo "zipStoreBase=GRADLE_USER_HOME" >> "$PROPERTIES"
+            echo "zipStorePath=wrapper/dists" >> "$PROPERTIES"
           else
-            grep -q "^distributionUrl=" "$PROPERTIES" || echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES"
+            grep -q "^distributionUrl=" "$PROPERTIES" || echo "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14.3-bin.zip" >> "$PROPERTIES"
           fi
 
       - name: Make gradlew executable
